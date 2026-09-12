@@ -1,7 +1,6 @@
 # Stock Price Movement Predictor
 
-*This project is for research and education. It is not investment advice, and
-nothing here should be used to make financial decisions.*
+*This project is for research and education. It is not investment advice, and nothing here should be used to make financial decisions.*
 https://stock-insure2.vercel.app?_vercel_share=6gDPmE7c1ycTfbgeD9O1qMTAok1jbOp
 
 Leak-free next-day **direction** classification for the NIFTY 50 index, with a
