@@ -298,3 +298,4 @@ from Yahoo Finance and remains subject to Yahoo's terms of service.
 
 *This project is for research and education. It is not investment advice, and
 nothing here should be used to make financial decisions.*
+https://stock-insure2.vercel.app?_vercel_share=6gDPmE7c1ycTfbgeD9O1qMTAok1jbOp5
