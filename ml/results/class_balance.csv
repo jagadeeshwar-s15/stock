@@ -1,0 +1,4 @@
+Split,UP count,DOWN count,Total,UP %,DOWN %,Assessment
+Overall (usable),1486,1306,2792,0.532235,0.467765,mildly imbalanced
+Train,1204,1029,2233,0.539185,0.460815,mildly imbalanced
+Test,281,277,558,0.503584,0.496416,balanced

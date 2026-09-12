@@ -1,0 +1,14 @@
+{
+  "dataset": "NIFTY 50",
+  "ticker": "^NSEI",
+  "source": "Yahoo Finance",
+  "access_library": "yfinance 1.7.0",
+  "frequency": "Daily",
+  "requested_start": "2015-01-01",
+  "requested_end_exclusive": "2026-09-11",
+  "retrieved_at_utc": "2026-09-11T19:23:44+00:00",
+  "rows": 2879,
+  "first_date": "2015-01-02",
+  "last_date": "2026-09-10",
+  "sha256": "6461c511c539ce60b6f0e4a6b33268cc12b53f7eebdb0c26b76e581f76adde5b"
+}

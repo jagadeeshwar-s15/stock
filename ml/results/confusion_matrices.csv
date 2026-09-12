@@ -1,0 +1,5 @@
+Approach,True DOWN (TN),False UP (FP),False DOWN (FN),True UP (TP)
+Persistence,149,128,128,153
+Majority Class,0,277,0,281
+Raw OHLCV,0,277,0,281
+Engineered Features,0,277,0,281

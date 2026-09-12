@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens for the Stock Price Movement Predictor dashboard.
+ *
+ * Series colours are chosen so the two models stay separable under red-green
+ * colour-vision deficiency (orange vs indigo, validated). UP/green and
+ * DOWN/red carry domain meaning and are always paired with a second signal
+ * (position, a glyph or a text label), never colour alone.
+ */
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono-code), ui-monospace, "Cascadia Mono", monospace;
+
+  /* surfaces */
+  --color-canvas: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-subtle: #f8fafc;
+  --color-line: #e6e9f0;
+  --color-line-strong: #d3d9e6;
+
+  /* ink */
+  --color-ink: #0f172a;
+  --color-ink-2: #475569;
+  --color-ink-3: #64748b;
+  --color-ink-4: #94a3b8;
+
+  /* navigation */
+  --color-navy: #0b1437;
+  --color-navy-2: #16204a;
+  --color-navy-3: #223065;
+
+  /* accents and series */
+  --color-accent: #4f46e5;
+  --color-accent-2: #6366f1;
+  --color-accent-soft: #eef2ff;
+  --color-raw: #eb6834;
+  --color-raw-soft: #fff1e6;
+  --color-base-1: #94a3b8;
+  --color-base-2: #64748b;
+
+  /* direction semantics */
+  --color-up: #16a34a;
+  --color-up-ink: #15803d;
+  --color-up-soft: #ecfdf5;
+  --color-down: #dc2626;
+  --color-down-ink: #b91c1c;
+  --color-down-soft: #fef2f2;
+  --color-warn: #b45309;
+  --color-warn-soft: #fffbeb;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 10px 28px -18px rgb(15 23 42 / 0.28);
+  --shadow-pop: 0 12px 32px -12px rgb(15 23 42 / 0.24);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  th {
+    font-weight: 600;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* min-w-0 keeps a card from being widened by an oversized child when it is a
+     grid or flex item, which would otherwise break the responsive columns. */
+  .card {
+    @apply min-w-0 rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow-card)];
+  }
+
+  .card-pad {
+    @apply p-4 sm:p-5;
+  }
+
+  .card-title {
+    @apply text-[15px] font-semibold tracking-tight text-ink;
+  }
+
+  .card-subtitle {
+    @apply mt-0.5 text-[12.5px] leading-relaxed text-ink-3;
+  }
+
+  .label-caps {
+    @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-3;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Horizontally scrollable table wrapper: the page itself never scrolls sideways. */
+  .table-scroll {
+    @apply -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0;
+    scrollbar-width: thin;
+  }
+
+  .data-table {
+    @apply w-full min-w-full border-collapse text-[13px];
+    font-variant-numeric: tabular-nums;
+  }
+
+  .data-table th {
+    @apply whitespace-nowrap border-b border-line px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.06em] text-ink-3;
+  }
+
+  .data-table td {
+    @apply whitespace-nowrap border-b border-line/70 px-3 py-2 text-ink-2;
+  }
+
+  .data-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .data-table tbody tr:hover td {
+    @apply bg-subtle;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-1 text-[12px] font-medium text-ink-2;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-surface px-3.5 py-2 text-[13px] font-semibold text-ink-2 transition-colors hover:bg-subtle active:bg-line/60;
+  }
+
+  .btn-primary {
+    @apply border-transparent bg-accent text-white hover:bg-accent-2;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-line/70;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }

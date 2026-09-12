@@ -1,0 +1,11 @@
+model,class,precision,recall,f1-score,support
+Raw OHLCV,DOWN (0),0.000000,0.000000,0.000000,277
+Raw OHLCV,UP (1),0.503584,1.000000,0.669845,281
+Raw OHLCV,accuracy,,,0.503584,558
+Raw OHLCV,macro avg,0.251792,0.500000,0.334923,558
+Raw OHLCV,weighted avg,0.253597,0.503584,0.337323,558
+Engineered Features,DOWN (0),0.000000,0.000000,0.000000,277
+Engineered Features,UP (1),0.503584,1.000000,0.669845,281
+Engineered Features,accuracy,,,0.503584,558
+Engineered Features,macro avg,0.251792,0.500000,0.334923,558
+Engineered Features,weighted avg,0.253597,0.503584,0.337323,558

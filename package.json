@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "pipeline": "python ml/run_pipeline.py",
+    "pipeline:refresh": "python ml/run_pipeline.py --refresh",
+    "pipeline:test": "python -m pytest ml"
   },
   "dependencies": {
     "next": "16.3.5",

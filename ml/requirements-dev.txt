@@ -1,0 +1,4 @@
+-r requirements.txt
+
+# Unit tests for the leakage-sensitive building blocks (tests/)
+pytest>=8,<10

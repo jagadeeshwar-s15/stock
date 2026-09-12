@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The Python project: its virtual environment ships bundled JavaScript
+    // that is not part of this app.
+    "ml/**",
   ]),
 ]);
 

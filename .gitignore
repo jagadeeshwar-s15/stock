@@ -39,3 +39,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# temporary files
+*.tmp
+*.log
+
+# local AI/editor tooling (never part of the project deliverable)
+.claude/
+CLAUDE.md
+AGENTS.md

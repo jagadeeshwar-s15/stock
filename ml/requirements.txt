@@ -1,0 +1,18 @@
+# Stock Price Movement Predictor - Python dependencies
+# Results in results/ were produced with: pandas 3.0.5, numpy 2.5.3,
+# scikit-learn 1.9.1, matplotlib 3.11.2, yfinance 1.7.0 on Python 3.12.
+
+# Core analysis stack
+pandas>=2.2,<4
+numpy>=1.26,<3
+scikit-learn>=1.5,<2
+matplotlib>=3.8,<4
+
+# Data acquisition only: downloads the Yahoo Finance snapshot into data/raw/.
+# Not used for any feature, indicator or model.
+yfinance>=0.2.54,<2
+
+# Running and executing the notebook
+notebook>=7.0,<8
+ipykernel>=6.29,<8
+nbclient>=0.10,<1

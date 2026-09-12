@@ -1,0 +1,20 @@
+ref,stage,name,status,detail,id
+CHECK 1,Data,Dates sorted chronologically,PASS,2879 sessions from 2015-01-02 to 2026-09-10 are strictly increasing.,dates_sorted
+CHECK 2,Data,No duplicate dates,PASS,0 duplicated dates after cleaning.,dates_unique
+CHECK 3,Target,Target equals next-day movement,PASS,Independent recomputation of 1[Close(t+1) > Close(t)] matches all 2878 labels; the final row's label is undefined (NaN).,target_next_day
+CHECK 4,Target,Final unlabeled row excluded,PASS,2026-09-10 has no next close and is absent from the modeling data.,last_row_excluded
+CHECK 5,Features,No look-ahead constructs in feature code,PASS,"Syntax-tree scan of features.py and baselines.py found no negative shift, centred window, backward fill or interpolation; 1 shift(periods) call(s) take a variable lag, which trailing_return() restricts to positive values and the truncation test verifies numerically.",static_code_scan
+CHECK 5,Features,Features unchanged when the future is removed,PASS,All 14 features recomputed on 40 truncated histories; largest absolute difference = 0.0e+00.,truncation_test
+CHECK 6,Features,Target and next-day columns excluded from features,PASS,"Neither feature set contains Target, Next_Close, Next_Date or the Persistence helper columns.",no_label_in_features
+CHECK 6,Features,No NaN or infinite values in model inputs,PASS,2233 train and 558 test rows x 14 features are all finite.,no_nans
+CHECK 7,Split,Train period ends before test period,PASS,max(train date) = 2024-06-03 < min(test date) = 2024-06-05.,train_before_test
+CHECK 7,Split,Every training label resolved before the test window,PASS,Latest Close(t+1) used by a training label is from 2024-06-04; 1 embargo row(s) purged.,labels_resolved
+CHECK 8,Split,"Chronological split, no shuffling",PASS,Train + embargo + test reproduce the original date order exactly; no random split is used.,no_shuffle
+CHECK 9,Preprocessing,Scaler fitted on training rows only (Raw OHLCV),PASS,"StandardScaler saw 2233 rows (= training rows) and its Close mean 12,876.7 equals the training mean, not the train+test mean 15,197.5.",scaler_Raw OHLCV
+CHECK 9,Preprocessing,Scaler fitted on training rows only (Engineered Features),PASS,"StandardScaler saw 2233 rows (= training rows) and its Close mean 12,876.7 equals the training mean, not the train+test mean 15,197.5.",scaler_Engineered Features
+CHECK 10,Validation,Hyper-parameter search never sees the test set,PASS,"All 5 TimeSeriesSplit folds (gap = 1) index only the 2233 training rows, and each validation block starts after its fitting block ends.",cv_inside_train
+CHECK 11,Baselines,Majority class taken from training labels,PASS,"Training UP share 53.92% -> predict UP. (The test-set majority, UP, was not used.)",majority_from_train
+CHECK 12,Baselines,Persistence uses only information up to day t,PASS,Persistence(t) = 1[Close(t) > Close(t-1)] recomputed independently for every test day; it matches the realised next-day label on 54.1% of days (a rule that could see tomorrow would match 100%).,persistence_past_only
+CHECK 13,Evaluation,All four approaches scored on the same test days,PASS,"Persistence, Majority Class, Raw OHLCV, Engineered Features each predict the same 558 sessions (2024-06-05 to 2026-09-09).",same_test_window
+CHECK 14,Evaluation,Comparison table reproduces from saved predictions,PASS,Accuracy in four_way_comparison.csv equals the accuracy recomputed from test_predictions.csv for all 4 approaches.,exports_match
+CHECK 15,Evaluation,Prediction plot drawn from actual test predictions,PASS,"The 558 predictions plotted equal a fresh pipeline.predict() on the test features, in chronological order.",plot_uses_test_predictions
