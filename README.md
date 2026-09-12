@@ -1,5 +1,9 @@
 # Stock Price Movement Predictor
 
+*This project is for research and education. It is not investment advice, and
+nothing here should be used to make financial decisions.*
+https://stock-insure2.vercel.app?_vercel_share=6gDPmE7c1ycTfbgeD9O1qMTAok1jbOp
+
 Leak-free next-day **direction** classification for the NIFTY 50 index, with a
 web dashboard that renders the executed pipeline's real output.
 
@@ -295,7 +299,3 @@ ever displayed that the pipeline did not produce.
 from Yahoo Finance and remains subject to Yahoo's terms of service.
 
 ---
-
-*This project is for research and education. It is not investment advice, and
-nothing here should be used to make financial decisions.*
-https://stock-insure2.vercel.app?_vercel_share=6gDPmE7c1ycTfbgeD9O1qMTAok1jbOp5
